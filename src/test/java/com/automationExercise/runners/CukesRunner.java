@@ -9,9 +9,9 @@ import io.cucumber.junit.CucumberOptions;
         plugin = {"json:target/cucumber.json",
                 "html:target/default-html-reports"},
         features = "src/test/resources/features",
-        glue = "com/automationExercise/step_definitions",
+        glue = "com/automationExercise/stepDefinitions",
         dryRun = false,
-        tags = ""
+        tags = "@login"
 )
 public class CukesRunner {
 }
