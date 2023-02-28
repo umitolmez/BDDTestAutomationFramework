@@ -1,6 +1,6 @@
 package com.automationExercise.stepDefinitions;
 
-import com.automationExercise.pages.LoginPage;
+import com.automationExercise.pages.SignupLoginPage;
 import com.automationExercise.utilities.ConfigurationReader;
 import com.automationExercise.utilities.Driver;
 import io.cucumber.java.en.*;
@@ -8,7 +8,7 @@ import org.junit.Assert;
 
 public class LoginStepDefs {
 
-    LoginPage loginPage = new LoginPage();
+    SignupLoginPage signupLoginPage = new SignupLoginPage();
 
     @Given("launch browser")
     public void launch_browser() {
@@ -27,48 +27,44 @@ public class LoginStepDefs {
         String actualurl= Driver.get().getCurrentUrl();
         Assert.assertEquals(expectedUrl,actualurl);
 
-        String colorOfElement= loginPage.home.getAttribute("style");
+        String colorOfElement= signupLoginPage.home.getAttribute("style");
         Assert.assertTrue(colorOfElement.contains("orange"));
     }
 
     @When("Click on Signup / Login button")
     public void click_on_Signup_Login_button() {
-        loginPage.signupLogin.click();
+        signupLoginPage.signupLogin.click();
     }
 
     @Then("Verify Login to your account is visible")
     public void verify_Login_to_your_account_is_visible() {
-        Assert.assertTrue(loginPage.loginFormTitle.isDisplayed());
+        Assert.assertTrue(signupLoginPage.loginFormTitle.isDisplayed());
 
         String expectedTitle = "Login to your account";
-        String actualTitle = loginPage.loginFormTitle.getText();
+        String actualTitle = signupLoginPage.loginFormTitle.getText();
         Assert.assertEquals(expectedTitle, actualTitle);
     }
 
     @When("Enter correct email address and password")
     public void enter_correct_email_address_and_password() {
         String email = ConfigurationReader.get("email");
-        loginPage.email.sendKeys(email);
+        signupLoginPage.emailLogin.sendKeys(email);
 
         String password = ConfigurationReader.get("password");
-        loginPage.password.sendKeys(password);
+        signupLoginPage.password.sendKeys(password);
     }
 
     @When("Click login button")
     public void click_login_button() {
-        loginPage.loginButton.click();
+        signupLoginPage.loginButton.click();
     }
 
-    @Then("Verify that Logged in as username is visible")
-    public void verify_that_Logged_in_as_username_is_visible() {
-        String expectedText = "Logged in as " + "Ümit Ölmez";
-        String actualText = loginPage.loggedInAs.getText();
+
+    @Then("Verify that logged in as username is visible")
+    public void verify_that_logged_in_as_username_is_visible() {
+        String expectedText = "Logged in as " +ConfigurationReader.get("name");
+        String actualText = signupLoginPage.loggedInAs.getText();
         Assert.assertEquals(expectedText, actualText);
-    }
-
-    @When("Click Delete Account button")
-    public void click_Delete_Account_button() {
-        loginPage.deleteAccount.click();
     }
 
 }

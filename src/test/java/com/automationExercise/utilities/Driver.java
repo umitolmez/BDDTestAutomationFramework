@@ -11,6 +11,9 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Driver {
 
     private Driver() {

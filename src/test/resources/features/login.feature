@@ -1,7 +1,7 @@
 @login
 Feature: Login/Logout
 
-  Scenario: Login with correct email and password
+  Scenario:TC2: Login with correct email and password
     Given launch browser
     When Navigate to url http://automationexercise.com
     Then Verify that home page is visible successfully
@@ -9,5 +9,4 @@ Feature: Login/Logout
     Then Verify Login to your account is visible
     When Enter correct email address and password
     And Click login button
-    Then Verify that Logged in as username is visible
-    When Click Delete Account button
+    Then Verify that logged in as username is visible
