@@ -40,4 +40,6 @@ public class SignupLoginPage extends BasePage{
     @FindBy(id = "uniform-id_gender1")
     public WebElement titleMr;
 
+    @FindBy(xpath = "//p[@style=\"color: red;\"]")
+    public WebElement errorMessage;
 }
