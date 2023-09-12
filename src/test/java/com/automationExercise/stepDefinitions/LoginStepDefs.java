@@ -15,9 +15,8 @@ public class LoginStepDefs {
         //hooks
     }
 
-    @When("Navigate to url http://automationexercise.com")
-    public void navigate_to_url_http_automationexercise_com() {
-        String url= ConfigurationReader.get("url");
+    @When("Navigate to url {string}")
+    public void navigate_to_url(String url) {
         Driver.get().get(url);
     }
 
@@ -31,7 +30,7 @@ public class LoginStepDefs {
         Assert.assertTrue(colorOfElement.contains("orange"));
     }
 
-    @When("Click on Signup / Login button")
+    @When("Click on Signup Login button")
     public void click_on_Signup_Login_button() {
         signupLoginPage.signupLogin.click();
     }
@@ -67,4 +66,27 @@ public class LoginStepDefs {
         Assert.assertEquals(expectedText, actualText);
     }
 
+    @When("Enter incorrect {string} address and {string}")
+    public void enter_incorrect_address_and(String incorrectEmail, String incorrectPassword) {
+        signupLoginPage.emailLogin.sendKeys(incorrectEmail);
+
+        signupLoginPage.password.sendKeys(incorrectPassword);
+    }
+
+    @Then("Verify error {string} is visible")
+    public void verify_error_is_visible(String errorMessage) {
+        String actualMessage = signupLoginPage.errorMessage.getText();
+
+        Assert.assertEquals(errorMessage, actualMessage);
+    }
+
+    @When("Click Logout button")
+    public void click_Logout_button() {
+        signupLoginPage.logoutButton.click();
+    }
+
+    @Then("Verify that user is navigated to login page")
+    public void verify_that_user_is_navigated_to_login_page() {
+        Assert.assertTrue(Driver.get().getCurrentUrl().endsWith("/login"));
+    }
 }

@@ -11,7 +11,7 @@ import io.cucumber.junit.CucumberOptions;
         features = "src/test/resources/features",
         glue = "com/automationExercise/stepDefinitions",
         dryRun = false,
-        tags = "@register"
+        tags = "@TC4"
 )
 public class CukesRunner {
 }

@@ -1,11 +1,12 @@
-@register
+@regression @register
 Feature:
 
+  @TC1
   Scenario:TC1: Register User
   Given launch browser
-  When Navigate to url http://automationexercise.com
+  When Navigate to url "http://automationexercise.com"
   Then Verify that home page is visible successfully
-  When Click on Signup / Login button
+  When Click on Signup Login button
   Then Verify New User Signup! is visible
   When Enter name and email address
   And Click Signup button
