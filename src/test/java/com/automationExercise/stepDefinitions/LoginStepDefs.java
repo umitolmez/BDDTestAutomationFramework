@@ -23,8 +23,8 @@ public class LoginStepDefs {
     @Then("Verify that home page is visible successfully")
     public void verify_that_home_page_is_visible_successfully() {
         String expectedUrl = ConfigurationReader.get("url");
-        String actualurl= Driver.get().getCurrentUrl();
-        Assert.assertEquals(expectedUrl,actualurl);
+        String actualUrl= Driver.get().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
 
         String colorOfElement= signupLoginPage.home.getAttribute("style");
         Assert.assertTrue(colorOfElement.contains("orange"));

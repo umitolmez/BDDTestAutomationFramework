@@ -3,6 +3,7 @@ package com.automationExercise.stepDefinitions;
 import com.automationExercise.pages.SignupLoginPage;
 import com.automationExercise.pages.SignupPage;
 import com.automationExercise.utilities.BrowserUtils;
+import com.automationExercise.utilities.ConfigurationReader;
 import com.automationExercise.utilities.Driver;
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.*;
@@ -133,5 +134,14 @@ public class RegisterStepDefs {
     @When("Click Delete Account button")
     public void click_Delete_Account_button() {
         signupLoginPage.deleteAccount.click();
+    }
+
+    @When("Enter name and already registered email address")
+    public void enter_name_and_already_registered_email_address() {
+        String fullName = ConfigurationReader.get("fullName");
+        String email = ConfigurationReader.get("email");
+
+        signupLoginPage.nameBox.sendKeys(fullName);
+        signupLoginPage.emailSignup.sendKeys(email);
     }
 }
