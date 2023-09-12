@@ -32,4 +32,6 @@ public abstract class BasePage {
     @FindBy(id = "aswift_1")
     public WebElement iFrameAds;
 
+    @FindBy(linkText = "Logout")
+    public WebElement logoutButton;
 }
